@@ -1,0 +1,3 @@
+import Link from "next/link";
+import { ArrowLeft, Search } from "lucide-react";
+export default function NotFound() { return <section className="container-wide flex min-h-[65vh] flex-col items-center justify-center py-20 text-center"><Search size={32} className="mb-6 text-teal-400" /><p className="eyebrow mb-3">404 · A small detour</p><h1 className="section-title">This page is still a mystery.</h1><p className="mb-8 mt-4 text-sm text-muted">Let’s get you back to something you can explore.</p><Link href="/practice" className="btn-primary"><ArrowLeft size={16} />Back to the exercises</Link></section>; }

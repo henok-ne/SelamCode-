@@ -1,0 +1,126 @@
+[
+  {
+    "slug": "fizzbuzz", "title": "FizzBuzz", "difficulty": "Easy", "estimatedMinutes": 12,
+    "description": "Return a list of strings counting from 1 to n. Replace multiples of 3 with \"Fizz\", multiples of 5 with \"Buzz\", and multiples of both with \"FizzBuzz\". Every other number becomes a string.\n\nKeep the function name fizzbuzz. Return the list rather than printing it. For n less than 1, return an empty list.",
+    "starterCode": "def fizzbuzz(n):\n    result = []\n    for number in range(1, n + 1):\n        if number % 3 == 0:\n            result.append(\"Fizz\")\n        elif number % 5 == 0:\n            result.append(\"Buzz\")\n        elif number % 15 == 0:\n            result.append(\"FizzBuzz\")\n        else:\n            result.append(str(number))\n    return result\n",
+    "expectedOutput": "fizzbuzz(5) → [\"1\", \"2\", \"Fizz\", \"4\", \"Buzz\"]\nfizzbuzz(15) ends with \"FizzBuzz\"",
+    "functionName": "fizzbuzz", "conceptTags": ["loops", "conditionals", "functions"],
+    "testCases": [
+      {"name":"Count to five","args":[5],"expected":["1","2","Fizz","4","Buzz"],"hidden":false},
+      {"name":"A multiple of both","args":[15],"expected":["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"],"hidden":false},
+      {"name":"Empty count","args":[0],"expected":[],"hidden":true},
+      {"name":"Just one","args":[1],"expected":["1"],"hidden":true},
+      {"name":"Only Buzz","args":[10],"expected":["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz"],"hidden":true},
+      {"name":"Thirty steps","args":[30],"expected":["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz","16","17","Fizz","19","Buzz","Fizz","22","23","Fizz","Buzz","26","Fizz","28","29","FizzBuzz"],"hidden":true}
+    ]
+  },
+  {
+    "slug": "reverse-a-string", "title": "Reverse a string", "difficulty": "Easy", "estimatedMinutes": 8,
+    "description": "Write reverse_string(text) that returns the characters of text in reverse order. Preserve spaces, punctuation, and capitalization. An empty string should return an empty string.\n\nTry solving it with a loop or a slice. Return a new string; do not print it.",
+    "starterCode": "def reverse_string(text):\n    reversed_text = \"\"\n    for character in text:\n        reversed_text = reversed_text + character\n    return reversed_text\n",
+    "expectedOutput": "reverse_string(\"hello\") → \"olleh\"\nreverse_string(\"Selam Code\") → \"edoC maleS\"",
+    "functionName": "reverse_string", "conceptTags": ["strings", "loops", "functions"],
+    "testCases": [
+      {"name":"A familiar word","args":["hello"],"expected":"olleh","hidden":false},
+      {"name":"Keep the space","args":["Selam Code"],"expected":"edoC maleS","hidden":false},
+      {"name":"Empty string","args":[""],"expected":"","hidden":true},
+      {"name":"One character","args":["a"],"expected":"a","hidden":true},
+      {"name":"Punctuation","args":["ab!?"],"expected":"?!ba","hidden":true},
+      {"name":"Unicode characters","args":["ሰላም"],"expected":"ምላሰ","hidden":true}
+    ]
+  },
+  {
+    "slug": "largest-number", "title": "Find the largest number", "difficulty": "Easy", "estimatedMinutes": 10,
+    "description": "Write largest_number(numbers) that returns the largest value in a non-empty list of integers. The list may contain only negative numbers.\n\nDo not use the built-in max function for your first attempt. Track a candidate as you visit each number. You do not need to handle an empty list.",
+    "starterCode": "def largest_number(numbers):\n    largest = 0\n    for number in numbers:\n        if number > largest:\n            largest = number\n    return largest\n",
+    "expectedOutput": "largest_number([3, 7, 2]) → 7\nlargest_number([-8, -3, -12]) → -3",
+    "functionName": "largest_number", "conceptTags": ["lists", "loops", "conditionals"],
+    "testCases": [
+      {"name":"Positive numbers","args":[[3,7,2]],"expected":7,"hidden":false},
+      {"name":"All negative","args":[[-8,-3,-12]],"expected":-3,"hidden":false},
+      {"name":"One negative","args":[[-5]],"expected":-5,"hidden":true},
+      {"name":"Largest first","args":[[9,4,1]],"expected":9,"hidden":true},
+      {"name":"Repeated maximum","args":[[4,4,2]],"expected":4,"hidden":true},
+      {"name":"Zero and negatives","args":[[-2,0,-1]],"expected":0,"hidden":true}
+    ]
+  },
+  {
+    "slug": "count-vowels", "title": "Count vowels in a word", "difficulty": "Easy", "estimatedMinutes": 10,
+    "description": "Write count_vowels(word) that returns the number of English vowels in a string. Count a, e, i, o, and u in both uppercase and lowercase. Treat y as a consonant.\n\nSpaces and punctuation should not be counted. Return an integer, not a printed message.",
+    "starterCode": "def count_vowels(word):\n    count = 0\n    vowels = \"aeiou\"\n    for character in word:\n        if character in vowels:\n            count += 1\n    return count\n",
+    "expectedOutput": "count_vowels(\"hello\") → 2\ncount_vowels(\"Education\") → 5",
+    "functionName": "count_vowels", "conceptTags": ["strings", "loops", "conditionals"],
+    "testCases": [
+      {"name":"Lowercase vowels","args":["hello"],"expected":2,"hidden":false},
+      {"name":"Mixed case","args":["Education"],"expected":5,"hidden":false},
+      {"name":"No vowels","args":["rhythm"],"expected":0,"hidden":true},
+      {"name":"All uppercase","args":["AEIOU"],"expected":5,"hidden":true},
+      {"name":"Empty word","args":[""],"expected":0,"hidden":true},
+      {"name":"Spaces and punctuation","args":["A e! I?"],"expected":3,"hidden":true}
+    ]
+  },
+  {
+    "slug": "prime-number", "title": "Is it prime?", "difficulty": "Medium", "estimatedMinutes": 18,
+    "description": "Write is_prime(n) that returns True when an integer is prime and False otherwise. A prime is greater than 1 and has exactly two positive divisors: 1 and itself.\n\nPay special attention to 0, 1, 2, and negative numbers. Return a Boolean. A loop up to the square root of n is enough, but a simpler correct loop is welcome.",
+    "starterCode": "def is_prime(n):\n    for divisor in range(2, int(n ** 0.5) + 1):\n        if n % divisor == 0:\n            return False\n    return True\n",
+    "expectedOutput": "is_prime(7) → True\nis_prime(1) → False\nis_prime(2) → True",
+    "functionName": "is_prime", "conceptTags": ["conditionals", "loops", "functions"],
+    "testCases": [
+      {"name":"A small prime","args":[7],"expected":true,"hidden":false},
+      {"name":"A composite","args":[9],"expected":false,"hidden":false},
+      {"name":"One is not prime","args":[1],"expected":false,"hidden":true},
+      {"name":"Zero","args":[0],"expected":false,"hidden":true},
+      {"name":"The first prime","args":[2],"expected":true,"hidden":true},
+      {"name":"Negative integer","args":[-7],"expected":false,"hidden":true},
+      {"name":"A larger prime","args":[97],"expected":true,"hidden":true},
+      {"name":"A square","args":[49],"expected":false,"hidden":true}
+    ]
+  },
+  {
+    "slug": "sum-even-numbers", "title": "Sum the even numbers", "difficulty": "Easy", "estimatedMinutes": 10,
+    "description": "Write sum_even(numbers) that returns the sum of all even integers in a list. Odd numbers should be ignored. Zero is even.\n\nAn empty list, or a list with no even numbers, should return 0. Negative even numbers count too. Return the sum rather than printing it.",
+    "starterCode": "def sum_even(numbers):\n    total = 0\n    for number in numbers:\n        if number % 2 == 1:\n            total += number\n    return total\n",
+    "expectedOutput": "sum_even([1, 2, 3, 4]) → 6\nsum_even([1, 3, 5]) → 0",
+    "functionName": "sum_even", "conceptTags": ["lists", "loops", "conditionals"],
+    "testCases": [
+      {"name":"Mixed values","args":[[1,2,3,4]],"expected":6,"hidden":false},
+      {"name":"No evens","args":[[1,3,5]],"expected":0,"hidden":false},
+      {"name":"Empty list","args":[[]],"expected":0,"hidden":true},
+      {"name":"Negative evens","args":[[-2,-4,3]],"expected":-6,"hidden":true},
+      {"name":"Zero is even","args":[[0,1]],"expected":0,"hidden":true},
+      {"name":"All even","args":[[2,4,6]],"expected":12,"hidden":true}
+    ]
+  },
+  {
+    "slug": "first-duplicate", "title": "Find the first duplicate", "difficulty": "Medium", "estimatedMinutes": 15,
+    "description": "Write first_duplicate(numbers) that scans a list from left to right and returns the first value that has already appeared. If there are no duplicates, return None.\n\nFor [3, 1, 2, 1, 3], the answer is 1, because the second 1 appears before the second 3. Try using a set to remember values you have seen.",
+    "starterCode": "def first_duplicate(numbers):\n    seen = set()\n    for number in numbers:\n        seen.add(number)\n        if number in seen:\n            return number\n    return None\n",
+    "expectedOutput": "first_duplicate([3, 1, 2, 1, 3]) → 1\nfirst_duplicate([1, 2, 3]) → None",
+    "functionName": "first_duplicate", "conceptTags": ["lists", "loops", "conditionals"],
+    "testCases": [
+      {"name":"First repeated value","args":[[3,1,2,1,3]],"expected":1,"hidden":false},
+      {"name":"All unique","args":[[1,2,3]],"expected":null,"hidden":false},
+      {"name":"Empty list","args":[[]],"expected":null,"hidden":true},
+      {"name":"Adjacent duplicates","args":[[2,2,3]],"expected":2,"hidden":true},
+      {"name":"Repeated zero","args":[[0,1,0]],"expected":0,"hidden":true},
+      {"name":"Negative duplicate","args":[[-1,2,-1]],"expected":-1,"hidden":true}
+    ]
+  },
+  {
+    "slug": "grade-calculator", "title": "Student grade calculator", "difficulty": "Medium", "estimatedMinutes": 15,
+    "description": "Write calculate_grade(score) that converts a score from 0 to 100 into a letter grade: A for 90–100, B for 80–89, C for 70–79, D for 60–69, and F below 60.\n\nBoundary scores belong to the higher grade. All inputs will be numbers between 0 and 100. Return a single uppercase letter.",
+    "starterCode": "def calculate_grade(score):\n    if score > 90:\n        return \"A\"\n    elif score > 80:\n        return \"B\"\n    elif score > 70:\n        return \"C\"\n    elif score > 60:\n        return \"D\"\n    else:\n        return \"F\"\n",
+    "expectedOutput": "calculate_grade(95) → \"A\"\ncalculate_grade(80) → \"B\"\ncalculate_grade(59) → \"F\"",
+    "functionName": "calculate_grade", "conceptTags": ["conditionals", "functions", "error handling"],
+    "testCases": [
+      {"name":"A clear A","args":[95],"expected":"A","hidden":false},
+      {"name":"Lower A boundary","args":[90],"expected":"A","hidden":false},
+      {"name":"Lower B boundary","args":[80],"expected":"B","hidden":true},
+      {"name":"Lower C boundary","args":[70],"expected":"C","hidden":true},
+      {"name":"Lower D boundary","args":[60],"expected":"D","hidden":true},
+      {"name":"Just below passing","args":[59],"expected":"F","hidden":true},
+      {"name":"Perfect score","args":[100],"expected":"A","hidden":true},
+      {"name":"Zero score","args":[0],"expected":"F","hidden":true}
+    ]
+  }
+]

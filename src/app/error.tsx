@@ -1,0 +1,3 @@
+"use client";
+import { RefreshCw, AlertCircle } from "lucide-react";
+export default function ErrorPage({ reset }: { error: Error & { digest?: string }; reset: () => void }) { return <section className="container-wide flex min-h-[65vh] flex-col items-center justify-center text-center"><AlertCircle size={32} className="mb-5 text-honey" /><h1 className="section-title">Let’s try that again.</h1><p className="my-5 max-w-md text-sm leading-7 text-muted">The page could not load. Your saved work has not been deleted. Check your connection and try again.</p><button onClick={reset} className="btn-primary"><RefreshCw size={16} />Try again</button></section>; }

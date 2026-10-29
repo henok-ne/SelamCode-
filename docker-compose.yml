@@ -1,0 +1,28 @@
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "file:/data/selamcode.db"
+      OPENAI_API_KEY: "${OPENAI_API_KEY:-}"
+      OPENAI_BASE_URL: "${OPENAI_BASE_URL:-https://api.openai.com/v1}"
+      OPENAI_MODEL: "${OPENAI_MODEL:-gpt-4o-mini}"
+      EXECUTION_MODE: "${EXECUTION_MODE:-preview}"
+      SANDBOX_IMAGE: "selamcode-python:latest"
+      EXECUTION_TIMEOUT_MS: "${EXECUTION_TIMEOUT_MS:-6000}"
+      SESSION_COOKIE_SECURE: "${SESSION_COOKIE_SECURE:-false}"
+      DEMO_AUTH_ENABLED: "${DEMO_AUTH_ENABLED:-false}"
+      SEED_DEMO_ACCOUNTS: "${SEED_DEMO_ACCOUNTS:-false}"
+      DEMO_PASSWORD: "${DEMO_PASSWORD:-}"
+      INSTRUCTOR_INVITE_CODE: "${INSTRUCTOR_INVITE_CODE:-}"
+      RESEARCH_SALT: "${RESEARCH_SALT:-change-this-before-any-real-classroom-use}"
+    volumes:
+      - selamcode-data:/data
+      # Mount the host Docker socket only if you set EXECUTION_MODE=sandbox and have
+      # built the python/Dockerfile runner image as `selamcode-python:latest`.
+      # - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+
+volumes:
+  selamcode-data:
